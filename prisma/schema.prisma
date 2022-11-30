@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch"]
+  log             = ["query"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id          Int                    @id @default(autoincrement())
+  name        String
+  icon        String?
+  banner      String?
+  description String?
+  teacherId   Int?
+  parent      Category?              @relation("ParentChilds", fields: [teacherId], references: [id])
+  childs      Category[]             @relation("ParentChilds")
+  products    CategoriesOnProducts[]
+  createdAt   DateTime               @default(now()) @map(name: "created_at")
+  updatedAt   DateTime               @updatedAt @map(name: "updated_at")
+}
+
+model Brand {
+  id          Int       @id @default(autoincrement())
+  name        String
+  icon        String?
+  banner      String?
+  description String?
+  products    Product[]
+  createdAt   DateTime  @default(now()) @map(name: "created_at")
+  updatedAt   DateTime  @updatedAt @map(name: "updated_at")
+}
+
+model Product {
+  id         Int                    @id @default(autoincrement())
+  name       String?
+  brand      Brand?                 @relation(fields: [brandId], references: [id])
+  brandId    Int
+  images     ProductImage[]
+  createdAt  DateTime               @default(now()) @map(name: "created_at")
+  updatedAt  DateTime               @updatedAt @map(name: "updated_at")
+  categories CategoriesOnProducts[]
+
+  @@map(name: "products")
+}
+
+model CategoriesOnProducts {
+  product    Product  @relation(fields: [productId], references: [id])
+  productId  Int // relation scalar field (used in the `@relation` attribute above)
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId Int // relation scalar field (used in the `@relation` attribute above)
+  assignedAt DateTime @default(now())
+  assignedBy String
+
+  @@id([productId, categoryId])
+}
+
+model ProductImage {
+  id        Int      @id @default(autoincrement())
+  name      String?
+  productId Int
+  product   Product? @relation(fields: [productId], references: [id])
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+}
+
+//product images

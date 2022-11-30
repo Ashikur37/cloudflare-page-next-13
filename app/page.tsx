@@ -1,9 +1,11 @@
 import Image from 'next/image'
 import styles from './page.module.css'
-
-export default function Home() {
+import supabase from '../utils/supabase';
+async function Home() {
+  const session = await supabase.auth.getSession();
+  console.log(session?.data?.session);
   return (
-    <div className={styles.container}>
+    <div className='bg-red-400'>
       <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js 13!</a>
@@ -55,3 +57,4 @@ export default function Home() {
     </div>
   )
 }
+export default Home;
