@@ -1,6 +1,6 @@
 'use client';
 
-import supabase from '../utils/supabase';
+import supabase from '../utils/supabase-browser';
 import { useEffect } from 'react';
 // Supabase auth needs to be triggered client-side
 export default function Login() {
