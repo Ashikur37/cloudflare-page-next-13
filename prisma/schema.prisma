@@ -18,8 +18,8 @@ model Category {
   icon        String?
   banner      String?
   description String?
-  teacherId   Int?
-  parent      Category?              @relation("ParentChilds", fields: [teacherId], references: [id])
+  parentId    Int?
+  parent      Category?              @relation("ParentChilds", fields: [parentId], references: [id])
   childs      Category[]             @relation("ParentChilds")
   products    CategoriesOnProducts[]
   createdAt   DateTime               @default(now()) @map(name: "created_at")

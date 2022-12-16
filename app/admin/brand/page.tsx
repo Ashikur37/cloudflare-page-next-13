@@ -15,6 +15,9 @@ async function BrandList({ params, searchParams }: {
             name: {
                 contains: searchParams.key || "",
             }
+        },
+        orderBy: {
+            id: "desc"
         }
     });
 

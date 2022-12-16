@@ -10,7 +10,7 @@ async function CategoryList({ params, searchParams }: {
     searchParams: { key: string },
 }) {
 
-    const categories = await prisma.category.findMany({
+    const products = await prisma.product.findMany({
         where: {
             name: {
                 contains: searchParams.key || "",
@@ -19,16 +19,13 @@ async function CategoryList({ params, searchParams }: {
         orderBy: {
             id: "desc"
         },
-        include: {
-            parent: true
-        }
+
     });
 
-    console.log(categories);
     return (
 
         <div className="p-8">
-            <Link href='/admin/category/create'>
+            <Link href='/admin/product/create'>
                 Add new
             </Link>
             <div className=" overflow-x-auto relative">
@@ -40,14 +37,9 @@ async function CategoryList({ params, searchParams }: {
                                 ID
                             </th>
                             <th scope="col" className="py-3 px-6">
-                                Category name
+                                name
                             </th>
-                            <th scope="col" className="py-3 px-6">
-                                Parent
-                            </th>
-                            <th>
-                                Banner
-                            </th>
+
                             <th scope="col" className="py-3 px-6">
                                 Created At
                             </th>
@@ -59,27 +51,19 @@ async function CategoryList({ params, searchParams }: {
                         </tr>
                     </thead>
                     <tbody>
-                        {categories.map(category => <tr key={category.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        {products.map(product => <tr key={product.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <th scope="row" className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {category.id}
+                                {product.id}
                             </th>
                             <th scope="row" className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {category.name}
+                                {product.name}
                             </th>
-                            <th scope="row" className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {
-                                    category.parent ? category.parent.name : "No"
-                                }
-                            </th>
-                            <th scope="row" className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                <Image src={`${process.env.IMAGE_PATH!}${category.banner}`} alt={category.name} width={200} height={100} />
 
-                            </th>
                             <td className="py-4 px-6">
-                                {category.createdAt.toLocaleString()}
+                                {product.createdAt.toLocaleString()}
                             </td>
                             <td className="py-4 px-6">
-                                <DeleteButton categoryId={category.id} />
+                                <DeleteButton productId={product.id} />
                             </td>
 
                         </tr>)}

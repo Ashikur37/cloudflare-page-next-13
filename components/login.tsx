@@ -2,8 +2,11 @@
 
 import supabase from '../utils/supabase-browser';
 import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+
 // Supabase auth needs to be triggered client-side
 export default function Login() {
+    const router = useRouter();
     useEffect(() => {
         async function readSession() {
             const session = await supabase.auth.getSession();
@@ -49,12 +52,13 @@ export default function Login() {
         if (error) {
             console.log({ error });
         }
+        router.replace('/login');
     };
 
     return (
         <>
-            <button onClick={handleEmailLogin}>Email Login</button>
-            <button onClick={handleGitHubLogin}>GitHub Login</button>
+            {/* <button onClick={handleEmailLogin}>Email Login</button>
+            <button onClick={handleGitHubLogin}>GitHub Login</button> */}
             <button onClick={handleLogout}>Logout</button>
         </>
     );
