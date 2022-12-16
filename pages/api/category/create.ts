@@ -16,7 +16,7 @@ export default async function handler(
         data:{
             name:req.body.name,
             banner:req.body.banner,
-            parentId:req.body.parent_id,
+            teacherId:req.body.parent_id,
           
             
         }
