@@ -5,10 +5,7 @@ import DeleteButton from './DeleteButton';
 import SearchHeader from './SearchHeader';
 import { prisma } from '../../../utils/prisma';
 // export const revalidate = 120;
-async function CategoryList({ params, searchParams }: {
-    params: { slug: string },
-    searchParams: { key: string },
-}) {
+async function CategoryList({ params, searchParams }: any) {
 
     const products = await prisma.product.findMany({
         where: {
