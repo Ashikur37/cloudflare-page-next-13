@@ -5,10 +5,7 @@ import DeleteButton from './DeleteButton';
 import SearchHeader from './SearchHeader';
 import { prisma } from '../../../utils/prisma';
 // export const revalidate = 120;
-async function BrandList({ params, searchParams }: {
-    params: { slug: string },
-    searchParams: { key: string },
-}) {
+async function BrandList({ params, searchParams }: any) {
 
     const brands = await prisma.brand.findMany({
         where: {
