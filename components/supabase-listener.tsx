@@ -13,7 +13,7 @@ export default function SupabaseListener({ accessToken }: { accessToken?: string
                 router.refresh()
             }
         })
-    }, [accessToken])
+    }, [accessToken, router])
 
     return null
 }

@@ -16,7 +16,9 @@ export default async function handler(
         data:{
             name:req.body.name,
             banner:req.body.banner,
-            parentId:req.body.parent_id
+            parentId:req.body.parent_id,
+          
+            
         }
      })
      res.json(data);

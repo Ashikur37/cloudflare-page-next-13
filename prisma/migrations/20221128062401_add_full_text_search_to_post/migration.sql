@@ -5,7 +5,7 @@ CREATE TABLE "Category" (
     "icon" TEXT,
     "banner" TEXT,
     "description" TEXT,
-    "teacherId" INTEGER,
+    "parentId" INTEGER,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
 
@@ -66,7 +66,7 @@ CREATE INDEX "Brand_textSearch_idx" ON "Brand"("textSearch");
 CREATE UNIQUE INDEX "products_email_key" ON "products"("email");
 
 -- AddForeignKey
-ALTER TABLE "Category" ADD CONSTRAINT "Category_teacherId_fkey" FOREIGN KEY ("teacherId") REFERENCES "Category"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "Category" ADD CONSTRAINT "Category_parentId_fkey" FOREIGN KEY ("parentId") REFERENCES "Category"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "products" ADD CONSTRAINT "products_brandId_fkey" FOREIGN KEY ("brandId") REFERENCES "Brand"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
