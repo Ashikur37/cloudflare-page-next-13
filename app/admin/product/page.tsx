@@ -1,7 +1,6 @@
 
-import Image from 'next/image';
 import Link from 'next/link';
-import DeleteButton from './DeleteButton';
+import ActionButton from './ActionButton';
 import SearchHeader from './SearchHeader';
 import { prisma } from '../../../utils/prisma';
 // export const revalidate = 120;
@@ -60,7 +59,7 @@ async function CategoryList({ params, searchParams }: any) {
                                 {product.createdAt.toLocaleString()}
                             </td>
                             <td className="py-4 px-6">
-                                <DeleteButton productId={product.id} />
+                                <ActionButton productId={product.id} />
                             </td>
 
                         </tr>)}

@@ -1,10 +1,11 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import DeleteButton from './DeleteButton';
+import ActionColumn from './ActionColumn';
 import SearchHeader from './SearchHeader';
 import { prisma } from '../../../utils/prisma';
 // export const revalidate = 120;
+// export const runtime = 'experimental-edge';
 async function BrandList({ params, searchParams }: any) {
 
     const brands = await prisma.brand.findMany({
@@ -45,8 +46,6 @@ async function BrandList({ params, searchParams }: any) {
                             <th scope="col" className="py-3 px-6">
                                 Action
                             </th>
-
-
                         </tr>
                     </thead>
                     <tbody>
@@ -65,17 +64,14 @@ async function BrandList({ params, searchParams }: any) {
                                 {brand.createdAt.toLocaleString()}
                             </td>
                             <td className="py-4 px-6">
-                                <DeleteButton brandId={brand.id} />
+                                <ActionColumn brandId={brand.id} />
                             </td>
 
                         </tr>)}
-
-
                     </tbody>
                 </table>
             </div>
         </div>
-
     )
 }
 
