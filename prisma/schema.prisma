@@ -12,8 +12,10 @@ datasource db {
 }
 
 model Category {
-  id          Int                    @id @default(autoincrement())
-  name        String
+  id   Int    @id @default(autoincrement())
+  name String
+  slug String
+
   icon        String?
   banner      String?
   description String?
@@ -28,6 +30,7 @@ model Category {
 model Brand {
   id          Int       @id @default(autoincrement())
   name        String
+  slug        String
   icon        String?
   banner      String?
   description String?
@@ -38,7 +41,8 @@ model Brand {
 
 model Product {
   id         Int                    @id @default(autoincrement())
-  name       String?
+  name       String
+  slug       String
   brand      Brand?                 @relation(fields: [brandId], references: [id])
   brandId    Int
   images     ProductImage[]

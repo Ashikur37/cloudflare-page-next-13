@@ -37,6 +37,10 @@ async function BrandList({ params, searchParams }: any) {
                             <th scope="col" className="py-3 px-6">
                                 Brand name
                             </th>
+
+                            <th scope="col" className="py-3 px-6">
+                                Slug
+                            </th>
                             <th>
                                 Banner
                             </th>
@@ -55,6 +59,9 @@ async function BrandList({ params, searchParams }: any) {
                             </th>
                             <th scope="row" className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {brand.name}
+                            </th>
+                            <th scope="row" className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {brand.slug}
                             </th>
                             <th scope="row" className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 <Image src={`${process.env.IMAGE_PATH!}${brand.banner}`} alt={brand.name} width={200} height={100} />

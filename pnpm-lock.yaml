@@ -9,6 +9,7 @@ specifiers:
   '@types/node': 18.11.9
   '@types/react': 18.0.25
   '@types/react-dom': 18.0.9
+  '@types/slug': ^5.0.3
   autoprefixer: ^10.4.13
   encoding: ^0.1.13
   eslint: 8.28.0
@@ -21,6 +22,7 @@ specifiers:
   react-dom: 18.2.0
   react-select: ^5.6.1
   server-only: ^0.0.1
+  slug: ^8.2.2
   tailwindcss: ^3.2.4
   typescript: 4.9.3
   vercel: ^28.6.0
@@ -41,11 +43,13 @@ dependencies:
   react-dom: 18.2.0_react@18.2.0
   react-select: 5.6.1_2zx2umvpluuhvlq44va5bta2da
   server-only: 0.0.1
+  slug: 8.2.2
   typescript: 4.9.3
 
 devDependencies:
   '@cloudflare/next-on-pages': 0.2.0_vercel@28.6.0
   '@types/formidable': 2.0.5
+  '@types/slug': 5.0.3
   autoprefixer: 10.4.13_postcss@8.4.19
   postcss: 8.4.19
   prisma: 4.7.1
@@ -681,6 +685,10 @@ packages:
   /@types/scheduler/0.16.2:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
     dev: false
+
+  /@types/slug/5.0.3:
+    resolution: {integrity: sha512-yPX0bb1SvrpaGlHuSiz6EicgRI4VBE+LO7IANlZagQwtaoKjLLcZc8y6s13vKp41mYvMCSzjtObxvU7/0JRPaA==}
+    dev: true
 
   /@typescript-eslint/parser/5.43.0_hsf322ms6xhhd4b5ne6lb74y4a:
     resolution: {integrity: sha512-2iHUK2Lh7PwNUlhFxxLI2haSDNyXvebBO9izhjhMoDC+S3XI9qt2DGFUsiJ89m2k7gGYch2aEpYqV5F/+nwZug==}
@@ -3814,6 +3822,11 @@ packages:
   /slash/4.0.0:
     resolution: {integrity: sha512-3dOsAHXXUkQTpOYcoAxLIorMTp4gIQr5IW3iVb7A7lFIp0VHhnynm9izx6TssdrIcVIESAlVjtnO2K8bg+Coew==}
     engines: {node: '>=12'}
+    dev: false
+
+  /slug/8.2.2:
+    resolution: {integrity: sha512-5ByW6qXqPeG0Tmlkh24JhdXhvQsbaJSjVr3GgGxUV0BSskZKKBZZfFWxezap8+fh1vxBN9GVbqI1V6nqAFxlBg==}
+    hasBin: true
     dev: false
 
   /source-map-js/1.0.2:
