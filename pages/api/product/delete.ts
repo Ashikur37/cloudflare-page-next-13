@@ -11,9 +11,9 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-    const data=   await prisma.category.delete({
+    const data=   await prisma.product.delete({
         where:{
-            id:req.body.categoryId
+            id:req.body.productId
         }
     })
      res.json(data);
