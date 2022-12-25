@@ -31,6 +31,11 @@ export default async function handler(
                         }
                     }
                 }
+            },
+            images:{
+                select:{
+                    name:true
+                }
             }
         }
     }
