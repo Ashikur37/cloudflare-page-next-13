@@ -20,6 +20,17 @@ export default async function handler(
                     name:true,
                     banner:true
                 }
+            },
+            categories:{
+                select:{
+                    category:{
+                        select:{
+                            name:true,
+                            slug:true,
+
+                        }
+                    }
+                }
             }
         }
     }

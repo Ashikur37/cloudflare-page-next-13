@@ -15,6 +15,23 @@ async function CategoryList({ params, searchParams }: any) {
         orderBy: {
             id: "desc"
         },
+        include: {
+            categories: {
+                select: {
+                    category: {
+                        select: {
+                            id: true,
+                            name: true
+                        }
+                    }
+                }
+            },
+            brand: {
+                select: {
+                    name: true
+                }
+            }
+        }
 
     });
 
@@ -35,7 +52,12 @@ async function CategoryList({ params, searchParams }: any) {
                             <th scope="col" className="py-3 px-6">
                                 name
                             </th>
-
+                            <th scope="col" className="py-3 px-6">
+                                Brand
+                            </th>
+                            <th>
+                                Category
+                            </th>
                             <th scope="col" className="py-3 px-6">
                                 Created At
                             </th>
@@ -53,6 +75,12 @@ async function CategoryList({ params, searchParams }: any) {
                             </th>
                             <th scope="row" className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {product.name}
+                            </th>
+                            <th scope="row" className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {product.brand?.name}
+                            </th>
+                            <th scope="row" className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {product.categories.map((category) => <span className='mr-1' key={category.category.id}>{category.category.name}</span>)}
                             </th>
 
                             <td className="py-4 px-6">

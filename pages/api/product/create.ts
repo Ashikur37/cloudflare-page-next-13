@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { prisma } from '../../../utils/prisma';
-
+import slug from 'slug';
 // type Data = {
 //   name: string
 // }
@@ -13,7 +13,7 @@ export default async function handler(
     const data=   await prisma.product.create({
         data:{
             name:req.body.name,
-           
+           slug:slug(req.body.name),
             brandId:req.body.brand_id
         }
      });
